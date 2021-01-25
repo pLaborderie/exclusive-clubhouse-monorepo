@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const cors = require('cors');
 const passport = require('./passport');
 
 const indexRouter = require('./routes/index');
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
