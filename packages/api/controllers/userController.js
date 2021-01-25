@@ -1,8 +1,15 @@
 const { body, validationResult } = require('express-validator');
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 module.exports = {
+  login: [
+    passport.authenticate('local'),
+    (req, res) => {
+      return res.status(200).json(req.user);
+    }
+  ],
   signUp: [
     body('username', 'A valid email is required').isEmail().trim().escape(),
     body('password', 'A password of at least 5 caracters is required').isLength({ min: 5 }).escape(),
@@ -17,7 +24,6 @@ module.exports = {
     body('membership').toBoolean(),
     body('admin').toBoolean(),
     async (req, res, next) => {
-      console.log('hello')
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
