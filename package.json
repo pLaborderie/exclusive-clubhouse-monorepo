@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "cd packages/api && npm install"
+    "heroku-postbuild": "cd packages/api && npm run heroku:build"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
