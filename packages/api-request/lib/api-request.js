@@ -1,8 +1,10 @@
-const ky = require('ky');
+import ky from'ky';
 require('dotenv').config();
-module.exports = apiRequest;
 
-const apiRequest = ky.extend({
+console.log(ky.create);
+const apiRequest = ky.create({
     prefixUrl: process.env.API_PREFIX,
     credentials: 'include'
 });
+
+export default apiRequest;
