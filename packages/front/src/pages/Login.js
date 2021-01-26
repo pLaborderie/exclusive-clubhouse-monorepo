@@ -5,10 +5,10 @@ import ky from 'ky';
 
 function Login() {
   const { register, handleSubmit } = useForm();
-  const history = useHistory;
+  const history = useHistory();
   const onSubmit = async (data) => {
     try {
-      const result = await ky.post('http://localhost:3000/users/login', { json: data }).json();
+      await ky.post('http://localhost:3000/users/login', { json: data, credentials: 'include' }).json();
       // TODO: Register user in global store
       history.push('/');
     } catch (err) {

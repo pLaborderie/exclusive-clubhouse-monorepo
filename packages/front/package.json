@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^12.6.2",
     "autoprefixer": "^9.8.6",
     "ky": "^0.26.0",
+    "mobx": "^6.0.5",
+    "mobx-react": "^7.0.6",
     "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
