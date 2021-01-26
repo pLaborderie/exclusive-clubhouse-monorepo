@@ -1,8 +1,7 @@
 import { createContext } from 'react'
 
 import { makeAutoObservable } from "mobx";
-import ky from 'ky';
-
+import apiRequest from 'api-request';
 class UserStore {
   user = null;
 
@@ -12,8 +11,7 @@ class UserStore {
 
   async fetchUser() {
     try {
-      this.user = await ky.get('http://localhost:3000/users/current-user', { credentials: 'include' }).json();
-      console.log(this.user);
+      this.user = await apiRequest.get('http://localhost:3000/users/current-user').json();
     } catch (err) {
       this.user = null;
     }

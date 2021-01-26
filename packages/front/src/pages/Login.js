@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import ky from 'ky';
+import apiRequest from 'api-request';
 
 function Login() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
   const onSubmit = async (data) => {
     try {
-      await ky.post('http://localhost:3000/users/login', { json: data, credentials: 'include' }).json();
+      await apiRequest.post('http://localhost:3000/users/login', { json: data }).json();
       // TODO: Register user in global store
       history.push('/');
     } catch (err) {

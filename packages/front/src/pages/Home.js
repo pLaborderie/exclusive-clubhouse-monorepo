@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import apiRequest from '@exclusive-clubhouse/api-request';
+import apiRequest from 'api-request';
 import MessagesList from '../components/MessagesList';
 
 function Home() {
