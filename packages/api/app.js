@@ -9,6 +9,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const messagesRouter = require('./routes/messages');
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(logger('dev'));
