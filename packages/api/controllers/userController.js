@@ -2,6 +2,7 @@ const { body, validationResult } = require('express-validator');
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const { isAuthenticated } = require('../middlewares/auth');
 
 module.exports = {
   login: [
@@ -58,4 +59,10 @@ module.exports = {
       await prisma.$disconnect();
     }
   },
+  getCurrentUser: [
+    isAuthenticated,
+    (req, res) => {
+      return res.status(200).json(req.user);
+    },
+  ]
 };
