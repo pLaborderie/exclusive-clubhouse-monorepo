@@ -4,9 +4,9 @@ import Layout from './components/Layout';
 import routes from './router';
 import UserStore, { UserContext } from './stores/UserStore';
 
-function App() {
-  const userStore = new UserStore();
+const userStore = new UserStore();
 
+function App() {
   useEffect(() => {
     userStore.fetchUser();
   }, []);
