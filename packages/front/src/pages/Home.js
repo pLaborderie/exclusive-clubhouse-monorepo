@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ky from 'ky';
+import apiRequest from 'api-request';
 import MessagesList from '../components/MessagesList';
 
 function Home() {
@@ -10,7 +11,7 @@ function Home() {
   }, []);
 
   const fetchMessages = async () => {
-    const result = await ky.get('http://localhost:3000/messages').json();
+    const result = await apiRequest.get('http://localhost:3000/messages').json();
     setMessages(result);
   };
 
