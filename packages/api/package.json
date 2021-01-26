@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "heroku:build": "npm install && npx prisma generate"
+    "heroku:build": "npm install && prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^2.15.0",
