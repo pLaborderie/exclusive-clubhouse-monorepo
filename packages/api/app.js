@@ -14,6 +14,7 @@ const app = express();
 const sameSite = process.env.NODE_ENV === 'production' ? 'None' : 'lax';
 const secure = process.env.NODE_ENV === 'production' ? true : 'auto';
 
+app.enable('trust proxy'); // For Heroku
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
