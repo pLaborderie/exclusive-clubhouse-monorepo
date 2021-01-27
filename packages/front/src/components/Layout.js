@@ -23,7 +23,7 @@ function Layout(props) {
               </div>
               <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                 {routes.map(route => (
-                  <CustomLink route={route} />
+                  <CustomLink route={route} key={route.link} />
                 ))}
               </div>
             </div>
@@ -85,7 +85,7 @@ function Layout(props) {
           <div className="pt-2 pb-3 space-y-1">
             {/* <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" --> */}
             {routes.map(route => (
-              <CustomLink route={route} />
+              <CustomLink route={route} key={route.link} />
             ))}
           </div>
         </div>

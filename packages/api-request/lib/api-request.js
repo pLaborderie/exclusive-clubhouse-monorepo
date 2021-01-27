@@ -1,11 +1,11 @@
 import ky from'ky';
 
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+const prefixUrl = process.env.NODE_ENV === 'production'
+    ? process.env.PREFIX_URL
+    : 'http://localhost:3000';
 
 const apiRequest = ky.create({
-    prefixUrl: process.env.API_PREFIX,
+    prefixUrl,
     credentials: 'include'
 });
 

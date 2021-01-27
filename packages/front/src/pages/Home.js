@@ -10,7 +10,7 @@ function Home() {
   }, []);
 
   const fetchMessages = async () => {
-    const result = await apiRequest.get('/messages').json();
+    const result = await apiRequest.get('messages').json();
     setMessages(result);
   };
 
