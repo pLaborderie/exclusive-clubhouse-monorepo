@@ -8,7 +8,7 @@ function Login() {
   const history = useHistory();
   const onSubmit = async (data) => {
     try {
-      await apiRequest.post('http://localhost:3000/users/login', { json: data }).json();
+      await apiRequest.post('/users/login', { json: data }).json();
       // TODO: Register user in global store
       history.push('/');
     } catch (err) {

@@ -1,7 +1,9 @@
 import ky from'ky';
-require('dotenv').config();
 
-console.log(ky.create);
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const apiRequest = ky.create({
     prefixUrl: process.env.API_PREFIX,
     credentials: 'include'

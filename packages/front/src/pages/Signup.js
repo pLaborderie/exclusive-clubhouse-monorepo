@@ -8,7 +8,7 @@ function Signup() {
   const history = useHistory();
   const onSubmit = async (data) => {
     try {
-      await apiRequest.post('http://localhost:3000/users/sign-up', { json: data }).json();
+      await apiRequest.post('/users/sign-up', { json: data }).json();
       history.push('/');
     } catch (err) {
       console.error(err);
