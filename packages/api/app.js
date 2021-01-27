@@ -12,11 +12,12 @@ require('dotenv').config();
 
 const app = express();
 const sameSite = process.env.NODE_ENV === 'production' ? 'None' : 'lax';
+const secure = process.env.NODE_ENV === 'production' ? true : 'auto';
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true, cookie: { secure: 'auto', sameSite, path: '/' } }));
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true, cookie: { secure, sameSite, path: '/' } }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
