@@ -8,7 +8,10 @@ module.exports = {
   login: [
     passport.authenticate('local'),
     (req, res) => {
-      return res.status(200).json(req.user);
+      console.log(req.header('Set-Cookie'));
+      return res.status(200)
+        // .header('Set-Cookie', 'HttpOnly;SameSite=None')
+        .json(req.user);
     }
   ],
   signUp: [
