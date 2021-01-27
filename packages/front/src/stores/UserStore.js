@@ -11,7 +11,7 @@ class UserStore {
 
   async fetchUser() {
     try {
-      this.user = await apiRequest.get('/users/current-user').json();
+      this.user = await apiRequest.get('users/current-user').json();
     } catch (err) {
       this.user = null;
     }
