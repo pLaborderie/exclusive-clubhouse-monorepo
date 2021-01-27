@@ -8,7 +8,12 @@ module.exports = {
   login: [
     passport.authenticate('local'),
     (req, res) => {
-      return res.status(200).json(req.user);
+      const cookieConf = process.env.NODE_ENV === 'production'
+        ? { sameSite: false, secure: true, httpOnly: true }
+        : { sameSite: true, httpOnly: true };
+      return res.status(200)
+        .cookie('connect.sid', req.cookies['connect.sid'], cookieConf)
+        .json(req.user);
     }
   ],
   signUp: [
