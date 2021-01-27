@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const session = require('express-session');
+const cookieSession = require('cookie-session');
 const cors = require('cors');
 const passport = require('./passport');
 
@@ -17,7 +17,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(cookieSession({ secret: "cats", resave: false, saveUninitialized: true, cookie: { secure: true, sameSite: 'none', httpOnly: true } }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
