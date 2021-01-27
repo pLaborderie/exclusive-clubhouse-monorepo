@@ -11,14 +11,12 @@ const messagesRouter = require('./routes/messages');
 require('dotenv').config();
 
 const app = express();
-const cookie = process.env.NODE_ENV === 'production'
-  ? { secure: true, sameSite: 'None', path: '/' }
-  : { secure: false, sameSite: 'lax', path: '/' };
+const sameSite = process.env.NODE_ENV === 'production' ? 'None' : 'lax';
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true, cookie }));
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true, cookie: { secure: 'auto', sameSite, path: '/' } }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
